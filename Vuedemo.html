@@ -1,0 +1,46 @@
+<!-- html模板快捷键：！or html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- cdn方式引入vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <title>练习Vue基础</title>
+</head>
+<body>
+    <div id="app">
+        {{Array}}
+        <div id="appid">
+        <button id="button">
+            按钮
+        </button>
+        <!-- v-if||v-else-if||v-else 条件判断 -->
+        <h1 v-if="awesome">Vue is awesome!</h1>
+        <h1 v-else>Oh no 😢</h1>
+    </div>
+</body>
+</html>
+<!-- js脚本 -->
+<script>
+    var Vue = new Vue({
+        el:"#app",
+        data:{
+            awesome:true,
+            Array:[1,2,3,4,5],
+        },
+        methods:{
+        },
+    });
+</script>
+<!-- css样式表 -->
+<style>
+#button{
+    width: 100px;
+    height: 30px;
+    color: rgb(17, 19, 17);
+    background-color: aquamarine;
+}
+
+</style>
