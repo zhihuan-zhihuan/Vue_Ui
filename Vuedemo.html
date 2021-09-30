@@ -13,12 +13,26 @@
     <div id="app">
         {{Array}}
         <div id="appid">
-        <button id="button">
-            按钮
-        </button>
+            <p>{{sumber}}</p>
+            <!-- v-on 绑定事件简写‘@’ -->
+            <button id="button" v-on:click="add()">
+            点击+1
+            </button>
         <!-- v-if||v-else-if||v-else 条件判断 -->
         <h1 v-if="awesome">Vue is awesome!</h1>
         <h1 v-else>Oh no 😢</h1>
+        <!-- v-show DOM中展示style="display: none;"，控制页面元素是否可见 -->
+        <p v-show="awesome">叽叽喳喳</p>
+        <!-- v-for 循环数组，对象，数组对象 -->
+        <p v-for="(value,index) in Array">{{value}}</p>
+        <p v-for="(value,key) in Object">{{key}} is {{value}}</p>
+        <p v-for="obj in objarr">{{obj.name}}</p>
+        <!-- v-bind 绑定属性，简写‘:’，例子中是动态绑定style属性 -->
+        <!-- 宽：width;高：height;边框：border: 1像素：1px 实心：solid 颜色：aquamarine,背景颜色：backgroundColor -->
+        <div style="width: 100px;height: 100px;border: 1px solid aquamarine;" v-bind:style="bgclr"></div>
+        <!-- v-model 绑定数据 -->
+        <input type="text" v-model="Text">
+        <button @click="print()">打印</button>
     </div>
 </body>
 </html>
@@ -27,11 +41,39 @@
     var Vue = new Vue({
         el:"#app",
         data:{
-            awesome:true,
+            awesome:false,
             Array:[1,2,3,4,5],
+            Object:{
+                name:"张三",
+                age:"20"
+            },
+            objarr:[{
+                name:"lili",
+                age:"21"
+            },
+            {
+                name:"zhangzhang",
+                age:"22"
+            }],
+            sumber:0,
+            bgclr:{
+                backgroundColor:"#ccc"
+            },
+            Text:"123"
         },
         methods:{
+            add(){
+                //this.改变作用域范围
+                this.sumber++
+            },
+            print(){
+                console.log(this.Text)
+            },
+            
         },
+        created(){
+                console.log("This is hook")
+            }
     });
 </script>
 <!-- css样式表 -->
